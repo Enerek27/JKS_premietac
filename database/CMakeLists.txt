@@ -23,3 +23,9 @@ configure_file(
     ${CMAKE_BINARY_DIR}/database/database_setup.sql
     COPYONLY
 )
+
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/songs.db
+    ${CMAKE_BINARY_DIR}/database/songs.db
+    COPYONLY
+)
