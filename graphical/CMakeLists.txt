@@ -1,5 +1,8 @@
 add_library(graphical STATIC
     widgets.c
+    buttons_reactions.c
+    widget_structs.h
+    presentation_stuf.c
 )
 
 
