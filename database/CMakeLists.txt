@@ -13,7 +13,7 @@ target_include_directories(database PUBLIC
 )
 
 target_link_libraries(database PUBLIC
-    SQLite3::SQLite3
+    ${SQLite3_LIBRARIES}
 
 
 )
