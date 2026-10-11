@@ -2,7 +2,7 @@ add_library(graphical STATIC
     widgets.c
     buttons_reactions.c
     widget_structs.h
-    presentation_stuf.c
+    presenter.c
 )
 
 
@@ -13,6 +13,8 @@ target_include_directories(graphical PUBLIC
 )
 
 target_link_libraries(graphical PUBLIC
+    
+    wifi
     database
     PkgConfig::GTK4
 

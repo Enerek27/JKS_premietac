@@ -1,16 +1,6 @@
 #ifndef BUTTONS_REACT
 #define BUTTONS_REACT
 
-#define MODE_JKS_INDEX 0
-#define MODE_OSTATNE_INDEX 1
-
-#define ROW_JKS "is_jks"
-#define ROW_ENUM_VAL "enum_val"
-
-#define SONG_DATABASE_ID "song_database_id"
-
-#define SPEVNIK_MODES                                                          \
-  (const char *[]) { "JKS Spevník", "Ostatné Spevníky", NULL }
 
 #include "db.h"
 #include "widget_structs.h"

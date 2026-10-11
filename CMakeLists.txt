@@ -29,6 +29,7 @@ add_executable(verzia_v2
 )
 
 target_link_libraries(verzia_v2 PRIVATE
+    wifi
     database
     graphical
     PkgConfig::GTK4

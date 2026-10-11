@@ -6,54 +6,47 @@
 #include <gtk/gtkshortcut.h>
 #include <sqlite3.h>
 
+#define MODE_JKS_INDEX 0
+#define MODE_OSTATNE_INDEX 1
 
+#define ROW_JKS "is_jks"
+#define ROW_ENUM_VAL "enum_val"
 
+#define SONG_DATABASE_ID "song_database_id"
 
+#define SPEVNIK_MODES                                                          \
+  (const char *[]) { "JKS Spevník", "Ostatné Spevníky", NULL }
 
-
-static const char *JKS_KATEGORIE[] = {
-    "Advent",
-    "Vianoce",
-    "K Najsvätejšiemu menu Ježiš",
-    "Pôst",
-    "Veľká noc",
-    "Nanebovstúpenie Pána",
-    "Na Ducha Svätého",
-    "Na Najsvätejšiu Trojicu",
-    "Na Božie Telo",
-    "K Srdcu Ježišovmu",
-    "K Svätej Omši",
-    "K Najsvätejšej Sviatosti Oltárnej",
-    "Litánie",
-    "Antifóna k Panne Márii",
-    "K Panne Márii",
-    "Ku Svätým",
-    "Za zomrelých",
-    "Kajúce",
-    "Piesne príležitostné",
-    "Pred požehnaním",
-    NULL
-};
+static const char *JKS_KATEGORIE[] = {"Advent",
+                                      "Vianoce",
+                                      "K Najsvätejšiemu menu Ježiš",
+                                      "Pôst",
+                                      "Veľká noc",
+                                      "Nanebovstúpenie Pána",
+                                      "Na Ducha Svätého",
+                                      "Na Najsvätejšiu Trojicu",
+                                      "Na Božie Telo",
+                                      "K Srdcu Ježišovmu",
+                                      "K Svätej Omši",
+                                      "K Najsvätejšej Sviatosti Oltárnej",
+                                      "Litánie",
+                                      "Antifóna k Panne Márii",
+                                      "K Panne Márii",
+                                      "Ku Svätým",
+                                      "Za zomrelých",
+                                      "Kajúce",
+                                      "Piesne príležitostné",
+                                      "Pred požehnaním",
+                                      NULL};
 
 static const char *OSTATNE_KATEGORIE[] = {
-    "Antifóna Šurín",
-    "Antifóna",
-    "Taizé",
-    "Mládežnícka",
-    "Hymna",
-    "Žalm",
-    "Responzórium",
-    "Latinské",
-    "Pohrebné",
-    "Svadobné",
-    "Ostatné",
-    NULL
-};
+    "Antifóna Šurín", "Antifóna", "Taizé",    "Mládežnícka", "Hymna",   "Žalm",
+    "Responzórium",   "Latinské", "Pohrebné", "Svadobné",    "Ostatné", NULL};
 
 typedef struct {
   GtkWidget *dialog;
-  GtkWidget *dropdown_mode;    // JKS / Ostatné
-  GtkWidget *dropdown_subcat;  // Konkrétna kategória
+  GtkWidget *dropdown_mode;   // JKS / Ostatné
+  GtkWidget *dropdown_subcat; // Konkrétna kategória
   GtkWidget *entry_id;        // Číslo piesne
   GtkWidget *entry_title;     // Názov piesne
   GtkTextBuffer *text_buffer; // buffer pre text piesne
@@ -62,14 +55,14 @@ typedef struct {
 } AddSongDialogData;
 
 typedef struct {
-    GtkWidget *song_list;
-    sqlite3 *db;
+  GtkWidget *song_list;
+  sqlite3 *db;
 } SelectedKategoriaData;
 
 typedef struct {
-    GtkWidget *entry_search;
-    GtkWidget *song_list;
-    sqlite3 *db;
+  GtkWidget *entry_search;
+  GtkWidget *song_list;
+  sqlite3 *db;
 } SearchData;
 
 typedef struct {
@@ -98,8 +91,5 @@ typedef struct {
   GtkWidget *song_list;
   sqlite3 *db;
 } EditSongData;
-
-
-
 
 #endif

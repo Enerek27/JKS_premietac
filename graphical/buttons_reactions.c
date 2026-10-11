@@ -18,7 +18,7 @@ void on_save_edit_song_clicked(GtkWidget *button, gpointer user_data) {
       return;
     }
   }
-
+  
   if (update_song_verses(data->db, data->real_id, data->song_type, song_text)) {
     g_free(song_text);
     GtkWidget *dialog = data->dialog;

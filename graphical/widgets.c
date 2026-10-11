@@ -1,6 +1,7 @@
 #include "widgets.h"
 #include "buttons_reactions.h"
 #include "db.h"
+#include "presenter.h"
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
@@ -119,6 +120,8 @@ void build_main_ui(GtkApplication *app, gpointer user_data) {
   cat_data->song_list = song_list;
   cat_data->db = db;
 
+  
+
   g_signal_connect(categories_list, "row-selected",
                    G_CALLBACK(on_category_selected), cat_data);
 
@@ -164,6 +167,13 @@ void build_main_ui(GtkApplication *app, gpointer user_data) {
   g_signal_connect(vybrane_list, "row-activated",
                    G_CALLBACK(on_song_double_clicked_remove), NULL);
   gtk_box_append(GTK_BOX(box_main), stlpec_vybrate);
+
+
+  PresentationStartData *present_start_data = g_new0(PresentationStartData, 1);
+  present_start_data->db = db;
+  present_start_data->vybrane_list = vybrane_list;
+
+  g_signal_connect(btn_premietac, "clicked", G_CALLBACK(on_start_presentation_clicked), present_start_data);
 
   // search bar nastavenie
   SearchData *search_data = g_new(SearchData, 1);
